@@ -1,7 +1,7 @@
 <template>
 	<div class="flex flex-shrink-0 flex-col w-64 bg-white dark:bg-gray-800 overflow-hidden">
 		<div class="flex flex-1 flex-col pl-6 space-y-6 overflow-hidden">
-			<div class="flex items-center space-x-2 text-black dark:text-white">
+			<div class="flex items-center space-x-2 mt-3 text-black dark:text-white">
 				<h4 class="text-md font-medium">Repositories</h4>
 				<router-link to="/new_repo" class="text-md">
 					<Icon icon="plus" width="16" height="16" />

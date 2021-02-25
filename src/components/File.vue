@@ -1,5 +1,5 @@
 <template>
-	<div class="code flex-1 overflow-auto rounded-md prose-md" v-html="content">
+	<div class="code flex-1 overflow-auto rounded-md text-sm" v-html="content">
 	</div>
 </template>
 
@@ -12,7 +12,7 @@
 	bottom: 1rem;
 }
 
-.code >>> div {
+:deep(div) {
 	height: 100%;
 }
 

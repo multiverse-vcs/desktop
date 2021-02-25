@@ -11,7 +11,7 @@ export default {
 	data() {
 		return {
 			colors: {
-				'white': 'bg-white hover:bg-gray-200 text-black',
+				'white': 'bg-white hover:bg-gray-200 text-black dark:bg-gray-700 dark:text-white dark:hover:bg-gray-800',
 				'green': 'bg-green-600 hover:bg-green-700 text-white'
 			}
 		}

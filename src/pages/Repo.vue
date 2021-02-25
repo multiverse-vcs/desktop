@@ -8,7 +8,7 @@
 		<Dropdown>
 			<template v-slot:name>
 				<Icon icon="git-branch" width="18" height="18" />
-				<span class="text-md">{{ branch }}</span>
+				<span class="text-md">{{ branchPath }}</span>
 			</template>
 			<template v-slot:menu>
 				<router-link v-bind:to="`/${peer}/${name}/${b}/${path}`" class="block px-4 py-2 text-sm" v-for="b in branches">

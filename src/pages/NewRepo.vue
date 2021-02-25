@@ -51,6 +51,7 @@ export default {
 
 			if (res.result) {
 				this.$store.commit('addRepo', this.name)
+				console.log(res.result.remote)
 				this.$router.push(`/${res.result.remote}`)
 			}
 		}
