@@ -1,32 +1,29 @@
 {
-  "authors": "Keenan Nemetz <keenan.nemetz@pm.me>",
+  "author": "Keenan Nemetz <keenan.nemetz@pm.me>",
   "description": "Decentralized version control system.",
-  "main": "public/main.js",
+  "main": "dist/main.js",
   "name": "Multiverse",
   "version": "0.0.0",
   "private": true,
-  "config": {
-    "forge": "forge.config.js"
+  "build": {
+    "appId": "com.multiverse-vcs.app",
+    "directories": {
+      "output": "out"
+    },
+    "files": [
+      "dist/**"
+    ]
   },
   "scripts": {
     "vite:start": "vite",
     "vite:build": "vite build",
     "vite:serve": "vite preview",
-    "electron:make": "electron-forge make",
-    "electron:package": "electron-forge package",
-    "electron:start": "electron-forge start",
+    "electron:build": "electron-builder -mwl",
+    "electron:start": "electron ./public/main.js",
     "start": "concurrently \"yarn vite:start\" \"yarn electron:start\"",
-    "make": "yarn vite:build && yarn electron:make"
-  },
-  "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "build": "yarn vite:build && yarn electron:build"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.54",
-    "@electron-forge/maker-deb": "^6.0.0-beta.54",
-    "@electron-forge/maker-dmg": "^6.0.0-beta.54",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
     "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/typography": "^0.4.0",
     "@vitejs/plugin-vue": "^1.1.4",
@@ -34,6 +31,7 @@
     "autoprefixer": "^10.2.4",
     "concurrently": "^6.0.0",
     "electron": "^11.3.0",
+    "electron-builder": "^22.10.5",
     "highlight.js": "^10.6.0",
     "postcss": "^8.2.6",
     "postcss-cli": "^8.3.1",
