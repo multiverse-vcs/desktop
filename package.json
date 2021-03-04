@@ -1,27 +1,29 @@
 {
   "author": "Keenan Nemetz <keenan.nemetz@pm.me>",
   "description": "Decentralized version control system.",
-  "main": "dist/main.js",
+  "homepage": "https://www.multiverse-vcs.com",
+  "main": "dist/www/main.js",
+  "license": "AGPL-3.0-or-later",
   "name": "Multiverse",
   "version": "0.0.0",
   "private": true,
   "build": {
     "appId": "com.multiverse-vcs.app",
-    "directories": {
-      "output": "out"
-    },
+    "publish": [
+      "github"
+    ],
     "files": [
-      "dist/**"
+      "dist/www/**/*"
     ]
   },
   "scripts": {
     "vite:start": "vite",
-    "vite:build": "vite build",
-    "vite:serve": "vite preview",
-    "electron:build": "electron-builder -mwl",
+    "vite:build": "vite build --base=./",
     "electron:start": "electron ./public/main.js",
+    "electron:build": "electron-builder -mwl",
     "start": "concurrently \"yarn vite:start\" \"yarn electron:start\"",
-    "build": "yarn vite:build && yarn electron:build"
+    "build": "yarn vite:build && yarn electron:build",
+    "publish": "electron-builder -p"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.2.1",

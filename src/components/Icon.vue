@@ -39,7 +39,7 @@ export default {
 	},
 	computed: {
 		link() {
-			return `/feather-sprite.svg#${this.icon}`
+			return `./feather-sprite.svg#${this.icon}`
 		}
 	}
 }

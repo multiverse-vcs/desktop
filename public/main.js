@@ -16,7 +16,7 @@ function createWindow () {
   })
 
   if (app.isPackaged) {
-    mainWindow.loadFile('dist/index.html')
+    mainWindow.loadURL(`file://${__dirname}/index.html`)
   } else {
     mainWindow.loadURL('http://localhost:3000')
   }
