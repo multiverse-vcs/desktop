@@ -1,10 +1,10 @@
 # Multiverse Desktop
 
-![preview](assets/preview.png)
-
 [![Gitter](https://badges.gitter.im/multiverse-vcs/community.svg)](https://gitter.im/multiverse-vcs/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 *This project is under heavy development. Changes may cause compatibility issues with previous versions.*
+
+![preview](assets/preview.png)
 
 ### Building
 
