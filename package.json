@@ -6,7 +6,6 @@
   "license": "AGPL-3.0-or-later",
   "name": "Multiverse",
   "version": "0.0.0",
-  "private": true,
   "build": {
     "appId": "com.multiverse-vcs.app",
     "publish": [
