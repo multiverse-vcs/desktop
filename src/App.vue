@@ -20,11 +20,9 @@ export default {
 	},
 	methods: mapActions([
 		'fetchSelf',
-		'fetchRepoList',
 	]),
 	created: async function() {
 		await this.fetchSelf()
-		await this.fetchRepoList()
   	}
 };
 </script>

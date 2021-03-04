@@ -1,6 +1,8 @@
 {
-  "main": "src/main.js",
-  "name": "web",
+  "authors": "Keenan Nemetz <keenan.nemetz@pm.me>",
+  "description": "Decentralized version control system.",
+  "main": "public/main.js",
+  "name": "Multiverse",
   "version": "0.0.0",
   "private": true,
   "config": {
@@ -13,19 +15,18 @@
     "electron:make": "electron-forge make",
     "electron:package": "electron-forge package",
     "electron:start": "electron-forge start",
-    "start": "concurrently \"yarn vite:start\" \"yarn electron:start\""
+    "start": "concurrently \"yarn vite:start\" \"yarn electron:start\"",
+    "make": "yarn vite:build && yarn electron:make"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0",
-    "vue": "^3.0.5",
-    "vuex": "^4.0.0"
+    "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
     "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.54",
     "@electron-forge/maker-rpm": "^6.0.0-beta.54",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
-    "@electron-forge/maker-zip": "^6.0.0-beta.54",
     "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/typography": "^0.4.0",
     "@vitejs/plugin-vue": "^1.1.4",
@@ -33,10 +34,13 @@
     "autoprefixer": "^10.2.4",
     "concurrently": "^6.0.0",
     "electron": "^11.3.0",
+    "highlight.js": "^10.6.0",
     "postcss": "^8.2.6",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.0.3",
     "vite": "^2.0.1",
-    "vue-router": "4"
+    "vue": "^3.0.5",
+    "vue-router": "4",
+    "vuex": "^4.0.0"
   }
 }

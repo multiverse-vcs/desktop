@@ -17,6 +17,5 @@ contextBridge.exposeInMainWorld('electron', {
 })
 
 contextBridge.exposeInMainWorld('multiverse', {
-		rpcURL: 'http://localhost:9001/_jsonRPC_',
-		httpURL: 'http://localhost:2020',
+		rpc: 'http://localhost:8421/_jsonRPC_',
 })

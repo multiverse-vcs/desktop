@@ -3,7 +3,7 @@ let sequence = 0
 
 // rpc makes a remote procedure call and returns a promise
 export default function rpc(method, params) {
-  return fetch(window.multiverse.rpcURL, {
+  return fetch(window.multiverse.rpc, {
     cache: "no-cache",
     method: "POST",
     headers: {

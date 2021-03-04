@@ -1,21 +1,8 @@
 <template>
-	<div class="code flex-1 overflow-auto rounded-md text-sm" v-html="content">
-	</div>
+	<pre class="h-full"><code class="h-full">{{ code }}</code></pre>
 </template>
 
-<style scoped>
-.code {
-	position: absolute;
-	left: 17rem;
-	right: 1rem;
-	top: 5rem;
-	bottom: 1rem;
-}
-
-:deep(div) {
-	height: 100%;
-}
-
+<style>
 ::-webkit-scrollbar {
 	height: 0.5em;
 	width: 0.5em;
@@ -33,9 +20,23 @@
 </style>
 
 <script>
+import hljs from 'highlight.js'
+import 'highlight.js/styles/monokai-sublime.css'
+
 export default {
 	props: {
-		content: String
+		code: String
+	},
+	mounted() {
+		this.highlight()
+	},
+	methods: {
+		highlight() {
+			hljs.highlightAll()
+		}
+	},
+	watch: {
+		code: 'highlight'
 	}
 }
 </script>

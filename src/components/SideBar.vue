@@ -8,7 +8,7 @@
 				</router-link>
 			</div>
 			<ul class="space-y-3 overflow-auto">
-				<li class="flex items-center space-x-2 text-black dark:text-white" v-for="repo in repoList">
+				<li class="flex items-center space-x-2 text-black dark:text-white" v-for="repo in repositories">
 					<Icon icon="book" width="18" height="18" />
 					<router-link v-bind:to="repoLink(repo)" class="w-full text-md">
 						{{ repo }}
@@ -51,7 +51,7 @@ export default {
 	},
 	computed: mapState({
 		peerID: 'peerID',
-		repoList: 'repoList',
+		repositories: 'repositories',
 	}),
 	methods: {
 		repoLink(name) {

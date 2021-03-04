@@ -2,53 +2,33 @@ import { createStore, createLogger } from 'vuex'
 import rpc from './rpc'
 
 const state = () => ({
+  following: [],
   peerID: null,
-  repoList: [],
-  repo: null,
-  file: null,
+  repositories: [],
 })
 
 const mutations = {
-  setPeerID(state, peerID) {
-    state.peerID = peerID
+  setPeerID(state, value) {
+    state.peerID = value
   },
-  setRepoList(state, list) {
-    state.repoList = list
+  setRepositories(state, value) {
+    state.repositories = value
   },
-  addRepo(state, name) {
-    state.repoList.push(name)
+  setFollowing(state, value) {
+    state.following = value
   },
-  setRepo(state, repo) {
-    state.repo = repo
+  addRepo(state, value) {
+    state.repoList.push(value)
   },
-  setFile(state, file) {
-    state.file = file
-  }
 }
 
 const actions = {
   async fetchSelf({ commit }) {
     const res = await rpc('Author.Self', [])
     commit('setPeerID', res.result.peerID)
+    commit('setRepositories', Object.keys(res.result.author.repositories))
+    commit('setFollowing', res.result.author.following)
   },
-  async fetchRepoList({ commit }) {
-    const res = await rpc('Repo.List', [])
-    commit('setRepoList', res.result.repositories)
-  },
-  async fetchRepo({ commit }, path) {
-    const res = await fetch(`${window.multiverse.httpURL}/${path}`)
-    commit('setRepo', await res.json())
-  },
-  async fetchFile({ commit }, path) {
-    const res = await fetch(`${window.multiverse.httpURL}/${path}?highlight=monokai`)
-    const type = res.headers.get("Content-Type")
-
-    if (type === "application/json") {
-      commit('setFile', await res.json())
-    } else {
-      commit('setFile', await res.text())
-    }
-  }
 }
 
 const debug = process.env.NODE_ENV !== 'production'

@@ -15,7 +15,11 @@ function createWindow () {
     }
   })
 
-  mainWindow.loadURL('http://localhost:3000')
+  if (app.isPackaged) {
+    mainWindow.loadFile('index.html')
+  } else {
+    mainWindow.loadURL('http://localhost:3000')
+  }
 }
 
 // This method will be called when Electron has finished
