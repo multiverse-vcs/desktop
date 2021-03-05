@@ -6,23 +6,14 @@
   "license": "AGPL-3.0-or-later",
   "name": "Multiverse",
   "version": "0.0.0",
-  "build": {
-    "appId": "com.multiverse-vcs.app",
-    "publish": [
-      "github"
-    ],
-    "files": [
-      "dist/www/**/*"
-    ]
-  },
+  "private": true,
   "scripts": {
     "vite:start": "vite",
     "vite:build": "vite build --base=./",
     "electron:start": "electron ./public/main.js",
     "electron:build": "electron-builder -mwl",
     "start": "concurrently \"yarn vite:start\" \"yarn electron:start\"",
-    "build": "yarn vite:build && yarn electron:build",
-    "publish": "electron-builder -p"
+    "release": "yarn vite:build && yarn electron:build"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.2.1",

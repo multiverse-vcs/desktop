@@ -2,8 +2,8 @@
 let sequence = 0
 
 // rpc makes a remote procedure call and returns a promise
-export default function rpc(method, params) {
-  return fetch(window.multiverse.rpc, {
+export default async function rpc(method, params) {
+  const res = await fetch(window.electron.rpc, {
     cache: "no-cache",
     method: "POST",
     headers: {
@@ -14,5 +14,7 @@ export default function rpc(method, params) {
       method: method, 
       params: params
     }),
-  }).then(res => res.json())
+  })
+
+  return await res.json()
 }

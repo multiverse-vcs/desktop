@@ -1,0 +1,13 @@
+appID: com.multiverse-vcs.desktop
+files:
+  - dist/www/**/*
+extraResources:
+  - from: ${platform}_${arch}
+    to: multi
+publish:
+  - github
+protocols:
+  - name: Multiverse
+    role: Viewer
+    schemes:
+      - multi

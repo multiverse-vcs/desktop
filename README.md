@@ -2,17 +2,24 @@
 
 [![Gitter](https://badges.gitter.im/multiverse-vcs/community.svg)](https://gitter.im/multiverse-vcs/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-*This project is under heavy development. Changes may cause compatibility issues with previous versions.*
+Multiverse desktop is the easiest way to get started with Multiverse.
 
 ![preview](assets/preview.png)
+
+### Features
+
+- Integrated code viewer. Browse repositories offline.
+- Follow peers to stay up to date on repository changes.
+- Issues, pull requests, and more coming soon.
 
 ### Building
 
 ```bash
+$ git clone https://github.com/multiverse-vcs/desktop.git
+$ cd desktop
 $ yarn install
-$ yarn build
+$ yarn start
 ```
-
 ### Contributing
 
 Found a bug or have a feature request? [Open an issue](https://github.com/multiverse-vcs/desktop/issues/new).

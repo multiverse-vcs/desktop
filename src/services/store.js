@@ -2,6 +2,7 @@ import { createStore, createLogger } from 'vuex'
 import rpc from './rpc'
 
 const state = () => ({
+  error: null,
   following: [],
   peerID: null,
   repositories: [],
@@ -17,6 +18,9 @@ const mutations = {
   setFollowing(state, value) {
     state.following = value
   },
+  setError(state, value) {
+    state.error = value
+  },
   addRepo(state, value) {
     state.repoList.push(value)
   },
@@ -25,9 +29,10 @@ const mutations = {
 const actions = {
   async fetchSelf({ commit }) {
     const res = await rpc('Author.Self', [])
+    if (res.error) throw res.error
     commit('setPeerID', res.result.peerID)
     commit('setRepositories', Object.keys(res.result.author.repositories))
-    commit('setFollowing', res.result.author.following)
+    commit('setFollowing', res.result.author.following)  
   },
 }
 
