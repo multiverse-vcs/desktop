@@ -4,33 +4,34 @@
   "homepage": "https://www.multiverse-vcs.com",
   "main": "dist/www/main.js",
   "license": "AGPL-3.0-or-later",
-  "name": "Multiverse",
+  "name": "multiverse",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "vite:start": "vite",
-    "vite:build": "vite build --base=./",
     "electron:start": "electron ./public/main.js",
     "electron:build": "electron-builder -mwl",
-    "start": "concurrently \"yarn vite:start\" \"yarn electron:start\"",
-    "release": "yarn vite:build && yarn electron:build"
+    "snowpack:start": "snowpack dev",
+    "snowpack:build": "snowpack build",
+    "postinstall": "./scripts/download.sh",
+    "start": "concurrently \"npm run snowpack:start\" \"npm run electron:start\"",
+    "build": "npm run snowpack:build && npm run electron:build",
+    "release": "npm run build"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.2.1",
-    "@tailwindcss/typography": "^0.4.0",
-    "@vitejs/plugin-vue": "^1.1.4",
-    "@vue/compiler-sfc": "^3.0.5",
-    "autoprefixer": "^10.2.4",
+    "@emotion/react": "^11.1.5",
+    "@reduxjs/toolkit": "^1.5.0",
+    "@snowpack/plugin-react-refresh": "^2.4.0",
     "concurrently": "^6.0.0",
     "electron": "^11.3.0",
     "electron-builder": "^22.10.5",
     "highlight.js": "^10.6.0",
-    "postcss": "^8.2.6",
-    "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.0.3",
-    "vite": "^2.0.1",
-    "vue": "^3.0.5",
-    "vue-router": "4",
-    "vuex": "^4.0.0"
-  }
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.1.3",
+    "snowpack": "^3.0.1"
+  },
+  "dependencies": {}
 }

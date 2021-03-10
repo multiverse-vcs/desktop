@@ -1,18 +1,11 @@
-const { contextBridge, BrowserWindow, remote } = require('electron')
+const { contextBridge, ipcRenderer, clipboard } = require('electron')
 
 contextBridge.exposeInMainWorld('electron', {
-	rpc: 'http://localhost:8421/_jsonRPC_',
+	jsonRPC: 'http://localhost:8421/_jsonRPC_',
 	platform: process.platform,
-	minimize() {
-		const mainWindow = remote.BrowserWindow.getFocusedWindow()
-		if (mainWindow) mainWindow.minimize()
-	},
-	maximize() {
-		const mainWindow = remote.BrowserWindow.getFocusedWindow()
-		if (mainWindow) mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize()
-	},
-	close() {
-		const mainWindow = remote.BrowserWindow.getFocusedWindow()
-		mainWindow.close()
-	}
+  copyText: (text) => clipboard.writeText(text),
+	on: (channel, listener) => ipcRenderer.on(channel, listener),
+	send: (channel, ...args) => ipcRenderer.send(channel, args),
+	sendSync: (channel, ...args) => ipcRenderer.sendSync(channel, args),
+	removeAllListeners: (channel) => ipcRenderer.removeAllListeners(channel),
 })
