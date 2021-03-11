@@ -1,9 +1,9 @@
-appID: com.multiverse-vcs.desktop
+appId: com.multiverse-vcs.desktop
 files:
   - dist/www/**/*
 extraResources:
-  - from: ${platform}_${arch}
-    to: multi
+  - from: bin/${platform}_${arch}
+    to: bin
 publish:
   - github
 protocols:

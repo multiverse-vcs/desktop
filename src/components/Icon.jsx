@@ -9,7 +9,7 @@ const style = css`
 function Icon({ name, ...rest }) {
   return (
     <svg css={style} {...rest} >
-	  	<use xlinkHref={ `/feather-sprite.svg#${name}` } />
+	  	<use xlinkHref={ `./feather-sprite.svg#${name}` } />
   	</svg>
   )
 }
