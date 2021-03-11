@@ -1,6 +1,8 @@
 appId: com.multiverse-vcs.desktop
 files:
   - dist/www/**/*
+directories:
+  buildResources: assets/build
 extraResources:
   - from: bin/${platform}_${arch}
     to: bin

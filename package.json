@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "electron:start": "electron ./public/main.js",
-    "electron:build": "electron-builder",
+    "electron:build": "electron-builder -mwl",
     "snowpack:start": "snowpack dev",
     "snowpack:build": "snowpack build",
     "postinstall": "./scripts/download.sh",
