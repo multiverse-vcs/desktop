@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react'
+import React from 'react'
 import Icon from './Icon'
 
 const style = css`
@@ -13,10 +14,6 @@ const style = css`
   left: 0;
   top: 0;
   background-color: rgba(0,0,0,0.6);
-`
-
-const hidden = css`
-  display: none;
 `
 
 const content = css`
@@ -41,8 +38,10 @@ const close = css`
 `
 
 function Modal({ open, setOpen, children }) {
+  if (!open) return (<React.StrictMode></React.StrictMode>)
+
   return (
-    <div css={open ? style : hidden}>
+    <div css={style}>
       <div css={content}>
         <div css={header}>
           <button css={close} onClick={() => setOpen(false)}>

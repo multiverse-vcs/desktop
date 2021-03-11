@@ -6,7 +6,7 @@ const style = css`
   position: absolute;
   left: 310px;
   right: 30px;
-  top: 80px;
+  top: 110px;
   bottom: 30px;
   overflow: auto;
   border-radius: 5px;

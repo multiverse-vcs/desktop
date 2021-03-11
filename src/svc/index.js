@@ -1,15 +1,6 @@
 let id = 0
 
 /**
- * Returns the shortened version of a peer ID.
- * @param {String} peerID 
- * @returns Short peer ID.
- */
-export function shortPeerID(peerID) {
-  return `${peerID.substring(0, 4)}..${peerID.slice(-4)}`
-}
-
-/**
  * Make a JSON RPC request.
  * @param {String} method
  * @param {Object} params 

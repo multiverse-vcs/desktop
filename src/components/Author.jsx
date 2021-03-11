@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react'
+import { Link } from 'react-router-dom'
 import Icon from './Icon'
 
 const style = css`
@@ -14,6 +15,10 @@ const main = css`
 `
 
 const avatar = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
   margin-right: 0.5rem;
   width: 40px;
   height: 40px;
@@ -22,33 +27,21 @@ const avatar = css`
 `
 
 const id = css`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
   color: #ddd;
-
-  &:hover {
-    svg {
-      display: block;
-    }
-  }
-
-  svg {
-    display: none;
-    margin-left: 0.25rem;
-  }
+  text-decoration: none;
 `
 
 function Author({ peerID }) {
   return (
     <div css={style}>
-      <img css={avatar} />
+      <div css={avatar}>
+        <Icon name="meh" width="32" height="32" strokeWidth="2" />
+      </div>
       <div css={main}>
         <span>Anonymous</span>
-        <code css={id} onClick={() => window.electron.copyText(peerID)}>
-          {`${peerID.substring(0, 4)}..${peerID.slice(-4)}`}
-          <Icon width="12" height="12" name="clipboard" />
-        </code>
+        <Link css={id} to={`/${peerID}`}>
+          <code>{`${peerID.substring(0, 4)}..${peerID.slice(-4)}`}</code>
+        </Link>
       </div>
     </div>
   )

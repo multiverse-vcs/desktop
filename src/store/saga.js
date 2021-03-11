@@ -1,5 +1,6 @@
 import { buffers, eventChannel } from 'redux-saga'
-import { call, put, take } from 'redux-saga/effects'
+import { call, put, retry, takeLeading, takeEvery } from 'redux-saga/effects'
+import jsonRPC from '../svc'
 
 function createChannel() {
   return eventChannel(emit => {
@@ -30,10 +31,22 @@ function createChannel() {
   }, buffers.sliding(100))
 }
 
-export default function*() {
-  const channel = yield call(createChannel)
-  while (true) {
-    const action = yield take(channel)
-    yield put(action)
+function* fetch() {
+  try {
+    yield put({ type: 'app/fetch/pending' })
+    const response = yield retry(12, 5000, jsonRPC, 'Author.Self')
+    yield put({ type: 'app/fetch/success', payload: response })
+  } catch (err) {
+    yield put({ type: 'app/fetch/error', payload: err.message })
   }
+}
+
+function* broadcast(action) {
+  yield put(action)
+}
+
+export default function* () {
+  const channel = yield call(createChannel)
+  yield takeLeading('app/daemon/up', fetch)
+  yield takeEvery(channel, broadcast)
 }

@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import jsonRPC from '../svc'
 
 const form = css`
@@ -51,14 +51,10 @@ function CreateRepo() {
       const method = !!url ? 'Repo.Import' : 'Repo.Create'
       const response = await jsonRPC(method, { name, url })
       
-      dispatch({ type: 'user/repository/create', payload: name })
+      dispatch({ type: 'app/repo/create', payload: name })
       history.push(`/${response.remote}`)
-
-      setName('')
-      setUrl('')
     } catch(err) {
       setError(err)
-    } finally {
       setLoading(false)
     }
   }

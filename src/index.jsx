@@ -6,7 +6,12 @@ import App from './App.jsx'
 import store from './store'
 import { Provider } from 'react-redux'
 
+const platform = window.electron.platform
+
 const theme = {
+  titleBar: {
+    background: platform === 'win32' ? '#000' : 'none'
+  },
   background: {
     primary: '#212529',
     secondary: '#343a40',

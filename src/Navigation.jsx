@@ -34,13 +34,9 @@ const item = css`
   height: 50px;
 `
 
-const flex = css`
-  flex: 1;
-`
-
-function SideNav() {
+function Navigation() {
   const history = useHistory()
-  const peerID = useSelector(state => state.user.peerID)
+  const peerID = useSelector(state => state.peerID)
 
   const [searchModal, setSearchModal] = useState(false)
   const [createRepoModal, setCreateRepoModal] = useState(false)
@@ -62,11 +58,6 @@ function SideNav() {
       <button css={item} onClick={() => setSearchModal(true)}>
         <Icon name="search" width="24" height="24" />
       </button>
-      <div css={flex}></div>
-      <Link to="/" css={item}>
-        <Icon name="settings" width="24" height="24" />
-      </Link>
-      {/* Modals */}
       <Modal open={createRepoModal} setOpen={setCreateRepoModal}>
         <CreateRepo />
       </Modal>
@@ -75,4 +66,4 @@ function SideNav() {
   )
 }
 
-export default SideNav
+export default Navigation

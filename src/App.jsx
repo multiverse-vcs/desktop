@@ -1,11 +1,13 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react'
-import { HashRouter } from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import Navigation from './Navigation'
+import Side from './Side'
+import Title from './Title'
 import Splash from './components/Splash'
-import Routes from './Routes'
-import SideNav from './SideNav'
-import TitleBar from './TitleBar'
+import Author from './pages/Author'
+import Repo from './pages/Repo'
 
 const wrapper = css`
   display: flex;
@@ -21,18 +23,26 @@ const inner = css`
 `
 
 function App() {
-  const loading = useSelector(state => state.user.loading)
-  const isDaemonUp = useSelector(state => state.app.isDaemonUp)
-  const ready = isDaemonUp && !loading
+  const loading = useSelector(state => state.loading)
+  const isDaemonUp = useSelector(state => state.isDaemonUp)
+
+  if (!isDaemonUp || loading) return (<Splash />)
 
   return (
     <HashRouter>
-      <TitleBar />
+      <Title />
       <div css={wrapper}>
-        <SideNav />
+        <Navigation />
         <div css={inner}>
-          {ready === true && <Routes />}
-          {ready === false && <Splash />}
+          <Side />
+          <Switch>
+            <Route path="/:peerID/:name">
+              <Repo />
+            </Route>
+            <Route path="/:peerID">
+              <Author />
+            </Route>
+          </Switch>
         </div>
       </div>
     </HashRouter>

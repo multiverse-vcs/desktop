@@ -12,6 +12,7 @@ const style = css`
   z-index: 1;
   left: 0;
   top: 0;
+  color: #fff;
   background-color: rgba(0,0,0,0.6);
 `
 
@@ -36,6 +37,7 @@ const form = css`
   background: #ddd;
   border-radius: 5px;
   padding: 0 1rem;
+  color: #000;
 `
 
 const input = css`

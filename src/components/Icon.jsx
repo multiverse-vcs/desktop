@@ -2,14 +2,13 @@
 import { jsx, css } from '@emotion/react'
 
 const style = css`
-  stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
 `
 
-function Icon({ name, width, height, stroke, fill }) {
+function Icon({ name, ...rest }) {
   return (
-    <svg css={style} width={width} height={height} stroke={stroke} fill={fill} >
+    <svg css={style} {...rest} >
 	  	<use xlinkHref={ `/feather-sprite.svg#${name}` } />
   	</svg>
   )
@@ -18,6 +17,7 @@ function Icon({ name, width, height, stroke, fill }) {
 Icon.defaultProps = {
   width: 24,
   height: 24,
+  strokeWidth: 1,
   stroke: 'currentColor',
   fill: 'none',
 }

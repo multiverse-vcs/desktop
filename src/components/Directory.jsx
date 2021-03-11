@@ -8,6 +8,7 @@ const list = css`
   background: #fff;
   border-radius: 5px;
   list-style-type: none;
+  user-select: none;
 `
 
 const item = css`
