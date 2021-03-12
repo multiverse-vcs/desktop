@@ -5,7 +5,7 @@
   "main": "dist/www/main.js",
   "license": "AGPL-3.0-or-later",
   "name": "multiverse",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "repository": {
     "type": "git",
