@@ -13,7 +13,7 @@
   },
   "scripts": {
     "electron:start": "electron ./public/main.js",
-    "electron:build": "electron-builder -mwl",
+    "electron:build": "electron-builder",
     "snowpack:start": "snowpack dev",
     "snowpack:build": "snowpack build",
     "start": "concurrently \"npm run snowpack:start\" \"npm run electron:start\"",
