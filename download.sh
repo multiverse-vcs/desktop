@@ -15,7 +15,7 @@ cd $DIR
 
 for file in "${FILES[@]}"
 do
-  cho "downloading ${file}..."
+  echo "downloading ${file}..."
   curl -sOL ${URL}/v${VERSION}/multiverse_${VERSION}_${file}.tar.gz
   mkdir ${file}
 
