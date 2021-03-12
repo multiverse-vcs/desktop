@@ -17,6 +17,7 @@ Multiverse desktop is the easiest way to get started with Multiverse.
 ```bash
 $ git clone https://github.com/multiverse-vcs/desktop.git
 $ cd desktop
+$ ./download.sh
 $ npm install
 $ npm start
 ```

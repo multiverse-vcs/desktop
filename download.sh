@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DIR=./bin
-
+URL=https://github.com/multiverse-vcs/go-multiverse/releases/download
 VERSION=0.0.5
 
 FILES=(
@@ -14,18 +14,18 @@ FILES=(
     win32_x64
 )
 
-if [ -d "$DIR" ]; then
-  exit 0
+set -e
+
+if [ ! -d "$DIR" ]; then
+  mkdir $DIR
 fi
 
-set -e
-mkdir $DIR
 cd $DIR
 
 for file in "${FILES[@]}"
 do
     echo "downloading ${file}..."
-    curl -sOL https://github.com/multiverse-vcs/go-multiverse/releases/download/v${VERSION}/multiverse_${VERSION}_${file}.tar.gz
+    curl -sOL ${URL}/v${VERSION}/multiverse_${VERSION}_${file}.tar.gz
     mkdir ${file}
 
     echo "extracting ${file}..."

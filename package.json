@@ -16,10 +16,8 @@
     "electron:build": "electron-builder -mwl",
     "snowpack:start": "snowpack dev",
     "snowpack:build": "snowpack build",
-    "postinstall": "./scripts/download.sh",
     "start": "concurrently \"npm run snowpack:start\" \"npm run electron:start\"",
-    "build": "npm run snowpack:build && npm run electron:build",
-    "release": "npm run build"
+    "build": "npm run snowpack:build && npm run electron:build"
   },
   "devDependencies": {
     "@emotion/react": "^11.1.5",
