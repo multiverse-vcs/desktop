@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 VERSION=0.0.5
 FILES=(darwin_arm64 darwin_x64 linux_arm64 linux_ia32 linux_x64 win32_ia32 win32_x64)
