@@ -8,6 +8,7 @@ import Title from './Title'
 import Splash from './components/Splash'
 import Author from './pages/Author'
 import Repo from './pages/Repo'
+import Home from './pages/Home'
 
 const wrapper = css`
   display: flex;
@@ -24,9 +25,9 @@ const inner = css`
 
 function App() {
   const loading = useSelector(state => state.loading)
-  const isDaemonUp = useSelector(state => state.isDaemonUp)
+  const daemonStatus = useSelector(state => state.daemonStatus)
 
-  if (!isDaemonUp || loading) return (<Splash />)
+  if (!daemonStatus || loading) return (<Splash />)
 
   return (
     <HashRouter>
@@ -41,6 +42,9 @@ function App() {
             </Route>
             <Route path="/:peerID">
               <Author />
+            </Route>
+            <Route path="/">
+              <Home />
             </Route>
           </Switch>
         </div>

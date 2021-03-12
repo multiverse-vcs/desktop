@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 export default createSlice({
   name: 'app',
   initialState: {
-    isDaemonUp: window.electron.sendSync('daemon/status'),
+    daemonPath: window.electron.sendSync('daemon/path'),
+    daemonStatus: window.electron.sendSync('daemon/status'),
     following: [],
     repositories: [],
     peerID: null,
@@ -12,10 +13,10 @@ export default createSlice({
   },
   reducers: {
     'daemon/up': (state) => {
-      state.isDaemonUp = true
+      state.daemonStatus = true
     },
     'daemon/down': (state) => {
-      state.isDaemonUp = false
+      state.daemonStatus = false
     },
     'fetch/pending': (state) => {
       state.loading = true

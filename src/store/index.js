@@ -5,13 +5,14 @@ import { spawn } from 'redux-saga/effects'
 import saga from './saga'
 import slice from './slice'
 
+const debug = import.meta.env.MODE === 'development'
 const sagaMiddleware = createSagaMiddleware()
 
 const store = configureStore({
   reducer: slice.reducer,
   middleware: (getDefaultMiddleware) => {
-    const middlewares = getDefaultMiddleware()
-    return middlewares.concat(sagaMiddleware, logger)
+    const middlewares = getDefaultMiddleware().concat(sagaMiddleware)
+    return debug ? middlewares.concat(logger) : middlewares
   }
 })
 

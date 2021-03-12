@@ -3,7 +3,7 @@ const { spawn } = require('child_process')
 const path = require('path')
 
 // this is the absolute path to the multiverse binary
-const multi = app.isPackaged
+const daemonPath = app.isPackaged
   ? path.join(process.resourcesPath, 'bin', 'multi')
   : path.join(__dirname, '..', 'bin', `${process.platform}_${process.arch}`, 'multi')
 
@@ -47,7 +47,7 @@ function createWindow() {
 
 // starts the daemon and listens for exit conditions
 function startDaemon() {
-  daemon = spawn(multi, ['daemon'])
+  daemon = spawn(daemonPath, ['daemon'])
   daemon.on('close', restartDaemon)
   daemon.on('error', restartDaemon)
   daemon.on('exit', restartDaemon)
@@ -106,6 +106,11 @@ app.on('quit', () => {
 // returns the daemon status
 ipcMain.on('daemon/status', (event) => {
   event.returnValue = daemonStatus
+})
+
+// returns the path to the multi binary
+ipcMain.on('daemon/path', (event) => {
+  event.returnValue = daemonPath
 })
 
 // minimize the main window

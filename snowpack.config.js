@@ -12,8 +12,10 @@ module.exports = {
     // {"match": "routes", "src": ".*", "dest": "/index.html"},
   ],
   optimize: {
-    /* Example: Bundle your final build: */
-    // "bundle": true,
+    bundle: true,
+    minify: true,
+    treeshake: true,
+    splitting: true,
   },
   packageOptions: {
     /* ... */

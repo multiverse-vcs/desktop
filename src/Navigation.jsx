@@ -49,7 +49,7 @@ function Navigation() {
 
   return (
     <div css={wrapper}>
-      <Link to={`/${peerID}`} css={item}>
+      <Link to={"/"} css={item}>
         <Icon name="globe" width="24" height="24" />
       </Link>
       <button css={item} onClick={() => setCreateRepoModal(true)}>
